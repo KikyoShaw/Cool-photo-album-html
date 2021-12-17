@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>把女朋友感动哭的相册</title>
+    <style type="text/css">
+      <!body{background-image: url("image/bg.jpg");background-size: 100% 100%;}>
+      html{
+          width: 100%;
+          height: 100%;
+        }
+		.video{
+		  position: fixed;  
+          right: 0px;
+		  left: 0px;
+		  bottom: 0px;
+		  top: 0px;
+          min-width: 100%;  
+          min-height: 100%;  
+          height: auto;  
+          width: auto;
+		  z-index: -11;
+		}
+        .bigbox{
+          width: 10px;
+          height: 10px;
+          margin: 200px 400px;
+          position: relative;
+        }
+        .box{
+          width:500px;
+          height:300px;
+          margin: 0 auto;
+          transform-style: preserve-3d;
+          transform: rotateX(-30deg) rotateY(-80deg);
+          -webkit-animation: mystyle 15s infinite;
+          animation-timing-function: linear;
+        }
+        @-webkit-keyframes mystyle{
+          from{transform: rotateX(-180deg) rotateY(-180deg);}
+          to{transform: rotateX(180deg) rotateY(180deg);}
+        }
+        .box div{
+          position: absolute;
+          width: 200px;
+          height: 200px;
+          opacity: 0.8;
+          transition: all .4s;
+        }
+        .bigpic{
+          width: 200px;
+          height: 200px;
+        }
+        .box .bigfront{
+          transform: rotateY(0deg) translateZ(100px);
+        }
+        .box .bigback{
+          transform: translateZ(-100px) rotateY(180deg);
+        }
+        .box .bigleft{
+          transform: rotateY(90deg) translateZ(100px);
+        }
+        .box .bigright{
+          transform: rotateY(-90deg) translateZ(100px);
+        }
+        .box .bigtop{
+          transform: rotateX(90deg) translateZ(100px);
+        }
+        .box .bigbottom{
+          transform: rotateX(-90deg) translateZ(100px);
+        }
+        .box span{
+          display: block;
+          position: absolute;
+          width: 140px;
+          height: 140px;
+          top: 25px;
+          left: 25px;
+        }
+        .box .smallpic{
+          width: 140px;
+          height: 140px;
+        }
+        .box .smallleft{
+          transform: rotateY(90deg) translateZ(70px);
+        }
+        .box .smallright{
+          transform: rotateY(-90deg) translateZ(70px);
+        }
+        .box .smalltop{
+          transform: rotateX(90deg) translateZ(70px);
+        }
+        .box .smallbottom{
+          transform: rotateX(-90deg) translateZ(70px);
+        }
+        .box .smallfront{
+          transform: rotateY(0deg) translateZ(70px);
+        }
+        .box .smallback{
+          transform: translateZ(-70px) rotateY(180deg);
+        }
+        .box:hover .bigleft{
+          transform: rotateY(90deg) translateZ(300px);
+        }
+        .box:hover .bigright{
+          transform: rotateY(-90deg) translateZ(300px);
+        }
+        .box:hover .bigtop{
+          transform: rotateX(90deg) translateZ(300px);
+        }
+        .box:hover .bigbottom{
+          transform: rotateX(-90deg) translateZ(300px);
+        }
+        .box:hover .bigfront{
+          transform: rotateY(0deg) translateZ(300px);
+        }
+        .box:hover .bigback{
+          transform: translateZ(-300px) rotateY(180deg);
+        }
+    </style>
+  </head>
+  <body>
+  <audio autoplay="autoplay" loop="loop"><source src="music/myall.mp3" type="audio/mpeg"></audio>
+  <div class="video">
+	<video class="background-video" src="video/bg.mp4" preload="auto" autoplay="" loop="" width="100%" tyle="opacity: 1; transition: opacity 0.5s linear 0s;"></video></div>
+  </div>
+    <div class="bigbox">
+      <div class="box">
+        <div class="bigfront">
+          <img src="image/1.jpg" class="bigpic" >
+        </div>
+        <div class="bigback">
+          <img src="image/2.jpg" class="bigpic">
+        </div>
+        <div class="bigleft">
+          <img src="image/3.jpg" class="bigpic">
+        </div>
+        <div class="bigright">
+          <img src="image/4.jpg" class="bigpic">
+        </div>
+        <div class="bigtop">
+          <img src="image/5.jpg" class="bigpic">
+        </div>
+        <div class="bigbottom">
+          <img src="image/6.jpg" class="bigpic">
+        </div>
+        <span class="smallfront">
+          <img src="image/7.jpg" class="smallpic" />
+        </span>
+        <span class="smallback">
+          <img src="image/8.jpg" class="smallpic" />
+        </span>
+        <span class="smallleft">
+          <img src="image/9.jpg" class="smallpic" />
+        </span>
+        <span class="smallright">
+          <img src="image/10.jpg" class="smallpic" />
+        </span>
+        <span class="smalltop">
+          <img src="image/11.jpg" class="smallpic" />
+        </span>
+        <span class="smallbottom">
+          <img src="image/12.jpg" class="smallpic" />
+        </span>
+      </div>
+	</div>
+  </body>
+</html>
