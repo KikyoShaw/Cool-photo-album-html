@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: rgba(255,192,203,0.3);
+    /* background-color: #000; */
+}
+
+/* 景深属性 3D效果必须设置景深属性*/
+#perspective{
+    perspective: 800px;
+}
+
+#wrap{
+    width: 159px;
+    margin: 150px auto;
+    position: relative;
+    /* transform-style 设置元素视觉风格  preserve-3d 3D效果 */
+    transform-style: preserve-3d;   
+}
+
+#wrap img{
+    position: absolute;
+    height: 240px;
+    width: 159px;
+    transform: rotateX(0deg);
+    border: 2px solid rgb(255, 173, 186);
+    border-radius: 10px;
+    /* 设置倒影 */
+    -webkit-box-reflect: below 5px -webkit-linear-gradient(top, rgba(0,0,0,0) 30%, rgba(0,0,0,0.5) 100%);    
+}
