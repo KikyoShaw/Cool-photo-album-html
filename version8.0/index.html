@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+        }
+
+        #app {
+            width: 400px;
+            height: 500px;
+            /* background-color: #fff; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .my-cube {
+            height: 200px;
+            width: 200px;
+            transform-style: preserve-3d;
+            transform-origin: 50% 50% -100px;
+            position: relative;
+            /* animation: rotate 5s linear infinite; */
+            /* 赛贝尔曲线 cubic-bezier 回弹 */
+            transition: all 1s cubic-bezier(.2, -1, .2, 2);
+            /* transform: rotateX(30deg) rotateY(30deg) rotateZ(30deg); */
+        }
+
+        .my-cube>.cube {
+            height: 100%;
+            width: 100%;
+            background-position: 50% 50%;
+            background-size: auto 100%;
+            position: absolute;
+            box-shadow: 0 0 10px 2px rgb(241, 146, 21);
+        }
+
+        .cube-1 {
+            top: 0;
+            left: 0;
+        }
+
+        .cube-2 {
+            top: 0;
+            left: -100%;
+            transform-origin: right;
+            transform: rotateY(-90deg);
+        }
+
+        .cube-3 {
+            top: 100%;
+            left: 0;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+
+        .cube-4 {
+            top: 0;
+            left: 100%;
+            transform-origin: left;
+            transform: rotateY(90deg);
+        }
+
+        .cube-5 {
+            top: -100%;
+            left: 0;
+            transform-origin: bottom;
+            transform: rotateX(90deg);
+        }
+
+        .cube-6 {
+            top: 0;
+            left: 0;
+            transform: translateZ(-200px) rotateZ(180deg);
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotateX(0) rotateY(0) rotateZ(0);
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+            }
+        }
+
+        .selector-cube {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .selector-cube>.cube {
+            height: 100px;
+            width: 100px;
+            background-position: 50% 50%;
+            background-size: auto 100%;
+            margin: 10px 0;
+            border: 4px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .selector-cube>.cube.active-cube {
+            border-color: rgb(241, 146, 21);
+            box-shadow: 0 0 10px 2px rgb(241, 146, 21);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="my-cube">
+            <div class="cube cube-1"></div>
+            <div class="cube cube-2"></div>
+            <div class="cube cube-3"></div>
+            <div class="cube cube-4"></div>
+            <div class="cube cube-5"></div>
+            <div class="cube cube-6"></div>
+        </div>
+        <div class="selector-cube">
+            <div class="cube active-cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+        </div>
+    </div>
+    <script>
+        const myCube = document.querySelector('.my-cube');
+        const myCubes = document.querySelectorAll('.my-cube>.cube');
+        const selectorCubes = document.querySelectorAll('.selector-cube>.cube');
+        for (let i = 0; i < 6; i++) {
+            myCubes[i].style.cssText += `background-image: url(./images/${i+1}.jpg);`;
+            selectorCubes[i].style.cssText += `background-image: url(./images/${i+1}.jpg);`;
+        }
+
+        selectorCubes.forEach((cube, idx) => {
+            cube.addEventListener('click', function () {
+                selectorCubes.forEach(ele => {
+                    ele.classList.remove('active-cube');
+                });
+                this.classList.add('active-cube');
+
+                let transformStr = ``;
+                switch (idx + 1) {
+                    case 1:
+                        transformStr = `transform: rotateX(0) rotateY(0) rotateZ(0);`
+                        break;
+                    case 2:
+                        transformStr = `transform: rotateX(0) rotateY(90deg) rotateZ(0);`
+                        break;
+                    case 3:
+                        transformStr = `transform: rotateX(90deg) rotateY(0) rotateZ(0);`
+                        break;
+                    case 4:
+                        transformStr = `transform: rotateX(0) rotateY(-90deg) rotateZ(0);`
+                        break;
+                    case 5:
+                        transformStr = `transform: rotateX(-90deg) rotateY(0) rotateZ(0);`
+                        break;
+                    case 6:
+                        transformStr = `transform: rotateX(-180deg) rotateY(0) rotateZ(0);`
+                        break;
+                    default:
+                        break;
+                };
+
+                myCube.style.cssText += transformStr;
+            });
+        });
+
+        function reSize() {
+            let clientWidth = document.documentElement.clientWidth;
+            document.documentElement.style.fontSize = clientWidth / 37.5 + 'px';
+        }
+
+        window.addEventListener('resize', reSize, false);
+        reSize();
+    </script>
+</body>
+
+</html>
