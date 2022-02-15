@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your's Album</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/main.css">
+	<link rel="stylesheet" href="./css/colorExtention.css">
+</head>
+<body>
+    <audio autoplay="autopaly" loop="loop">
+        <source src="music/bg.mp3" type="audio/mp3" />
+      </audio>
+    <header class="">
+        <h1>情字何解 怎落笔都不对</h1>
+      </header>
+    <div class="content">
+        <ul id="carousel"></ul>
+        <ul id="btn"></ul>
+        <div id="focus">
+            <div id="left">&lt;</div>
+            <div id="right">&gt;</div>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script src=" ./js/jq.min.js"></script>
+	<script src='./js/stopExecutionOnTimeout.js'></script>
+	<script src="./js/sakura.js"></script>
+	<script src="./js/buffer.js"></script>
+    <script>
+        renderStar()
+        renderColorByTime()
+        window.onload = function () {
+          $("#loadingAni").fadeOut(600);
+          $("header").addClass('animate__animated animate__fadeInDown animate__delay-1s')
+          $("main").show(0)
+          $('main').load('./pages/info.html')
+          $("main").addClass('animate__animated animate__fadeInUpBig animate__delay-1s')
+        };
+        $(function () {
+      
+        })
+      </script>	
+</body>
+</html>
